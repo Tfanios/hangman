@@ -1,23 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+import Keyboard from './components/Keyboard'
+import Scene from './components/Scene'
+import React from 'react'
+import { useSelector } from 'react-redux'
+import Tries from './components/Tries'
+import UsedLetters from './components/UsedLetters'
+import LostComponent from './components/LostComponent'
 
-function App() {
+
+const App = () => {
+  const { tries } = useSelector(state=>state.tries)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {tries>0?
+      <div>
+        <div style={{display:'flex',flexDirection:'row',justifyContent: 'space-evenly',width:'100%'}}>
+          <Tries />
+          <Scene />
+          <UsedLetters /> 
+        </div>
+        <div style={{display:'flex',justifyContent: 'center',alignItems: 'center',marginTop:'3%'}}>
+          <Keyboard />  
+        </div>
+      </div> 
+      :
+      <LostComponent />}
+      
     </div>
   );
 }
