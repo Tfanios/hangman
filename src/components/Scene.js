@@ -16,7 +16,7 @@ const Scene = () => {
             <div>
                 <Svgs tries={tries}/>
             </div>
-            <div className={classes.Scene} style={{marginTop:'3%'}}>
+            <div className={classes.Scene}>
                 {[...word].map((letter,index) => <SceneLetter  letter={letter} key={index} />)}
             </div>
         </div>
